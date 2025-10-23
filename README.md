@@ -3,7 +3,11 @@
 A **modular**, **production-ready** Spring Boot REST API for managing **loans**, **transactions**, and **interest calculations** — built using **Builder**, **Factory**, and **Strategy** design patterns.
 
 ---
+## 📄 Documentation
 
+For detailed API specifications and Swagger endpoints:
+
+📘 [View Swagger UI Documentation](Swagger%20UI.pdf)
 ## 🧭 Overview
 
 The **Quick Loan System** is a robust backend service that handles the entire **loan lifecycle** — from loan creation to repayment tracking and interest computation.  
