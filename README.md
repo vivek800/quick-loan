@@ -1,13 +1,5 @@
-<img width="1757" height="770" alt="image" src="https://github.com/user-attachments/assets/5b040ce7-9a50-4591-b893-647e37164bdd" />💸 Quick Loan System
 
 A modular and production-ready Spring Boot REST API to manage loans, transactions, and interest calculations — built with Builder, Factory, and Strategy design patterns.
-
-
-
-
-
-
-
 
 🧭 Overview
 
