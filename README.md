@@ -183,8 +183,7 @@ http://localhost:8080/actuator/health
 
 http://localhost:8080/actuator/metrics
 
-📄 (Optional) Add Swagger documentation or link here if available.
-
+ 
 📘 Future Enhancements
 
 🧮 Add EMI Calculator
