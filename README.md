@@ -1,108 +1,131 @@
+# 💸 Quick Loan System
 
-A modular and production-ready Spring Boot REST API to manage loans, transactions, and interest calculations — built with Builder, Factory, and Strategy design patterns.
+A **modular**, **production-ready** Spring Boot REST API for managing **loans**, **transactions**, and **interest calculations** — built using **Builder**, **Factory**, and **Strategy** design patterns.
 
-🧭 Overview
+---
 
-The Quick Loan System is a RESTful backend service designed to manage the entire loan lifecycle — from creation to repayment.
-It demonstrates clean architecture principles, reusable components, and enterprise-level design patterns.
+## 🧭 Overview
 
-Automatic interest calculation based on loan type
+The **Quick Loan System** is a robust backend service that handles the entire **loan lifecycle** — from loan creation to repayment tracking and interest computation.  
+It follows **clean architecture principles**, promotes **reusability**, and implements **enterprise-grade design patterns** for flexibility and maintainability.
 
-Flexible strategy pattern for dynamic interest computation
+### ✨ Highlights
 
-Unified API responses with ApiResponse
+- ⚙️ Automatic interest calculation based on loan type  
+- 🧮 Dynamic computation via **Strategy Pattern**  
+- 📦 Unified API responses (`ApiResponse`)  
+- 🧰 Centralized exception handling  
+- 📊 Ready for **Swagger**, **ELK**, and **Spring Boot Actuator**
 
-Ready for integration with Swagger, ELK, and Spring Boot Actuator
+---
 
-🎯 Features
+## 🎯 Features
 
-✅ Create, approve, and manage loans
-✅ Record and fetch loan transactions
-✅ Calculate interest dynamically using LoanRuleFactory strategies
-✅ Default interest rate for each LoanType
-✅ Centralized exception handling
-✅ Plug-and-play interest strategies (daily, fixed)
-✅ Monitoring via Actuator
+| ✅ Feature | Description |
+|------------|-------------|
+| 🏦 Loan Management | Create, approve, and manage loans |
+| 💰 Transactions | Record disbursements and repayments |
+| 🧮 Interest Calculation | Dynamic interest based on strategies |
+| 🔄 Plug & Play Rules | Use `LoanRuleFactory` for flexible logic |
+| ⚡ Default Loan Rates | Each `LoanType` has its own rate |
+| 🧩 Exception Handling | Centralized and consistent |
+| 📈 Monitoring | Integrated with Spring Boot Actuator |
 
-🧠 Design Patterns Used
-Pattern	Purpose	Implementation
-Builder	Simplifies complex Loan object creation	LoanBuilder.java
-Factory	Abstracts loan creation logic	LoanFactory.java
-Strategy	Dynamically selects interest calculation logic	InterestStrategy.java, DailyInterestStrategy.java
-🏗️ Project Architecture
+---
+
+## 🧠 Design Patterns Used
+
+| Pattern | Purpose | Implementation |
+|----------|----------|----------------|
+| 🧱 **Builder** | Simplifies complex Loan object creation | `LoanBuilder.java` |
+| 🏭 **Factory** | Abstracts loan creation logic | `LoanFactory.java` |
+| 🧮 **Strategy** | Dynamically selects interest calculation | `InterestStrategy.java`, `DailyInterestStrategy.java` |
+
+## 🏗️ Project Architecture
+
+---
 src/main/java/com/vivek/quickloan/
 ├── builder/
-│   └── LoanBuilder.java
+│ └── LoanBuilder.java
 ├── Controllers/
-│   └── LoanController.java
+│ └── LoanController.java
 ├── exception/
-│   └── Custom exceptions & handlers
+│ └── Custom exceptions & handlers
 ├── factory/
-│   └── LoanFactory.java
+│ └── LoanFactory.java
 ├── Models/
-│   ├── Loan.java
-│   ├── LoanTransaction.java
-│   └── enums/
-│       └── LoanType.java
+│ ├── Loan.java
+│ ├── LoanTransaction.java
+│ └── enums/
+│ └── LoanType.java
 ├── Repository/
-│   ├── LoanRepository.java
-│   └── LoanTransactionRepository.java
+│ ├── LoanRepository.java
+│ └── LoanTransactionRepository.java
 ├── response/
-│   └── ApiResponse.java
+│ └── ApiResponse.java
 ├── rules/
-│   ├── APRCalculator.java
-│   ├── InterestCalculator.java
-│   └── TransactionFilter.java
+│ ├── APRCalculator.java
+│ ├── InterestCalculator.java
+│ └── TransactionFilter.java
 ├── Services/
-│   ├── LoanService.java
-│   └── LoanServiceImpl.java
+│ ├── LoanService.java
+│ └── LoanServiceImpl.java
 ├── strategy/
-│   ├── InterestStrategy.java
-│   └── DailyInterestStrategy.java
-└── utilily/
-    └── LoanRuleFactory.java
+│ ├── InterestStrategy.java
+│ └── DailyInterestStrategy.java
+└── utility/
+└── LoanRuleFactory.java
 
-⚙️ Tech Stack
-Layer	Technology
-Language	Java 17
-Framework	Spring Boot 3.3.0
-Database	MySQL 8.0
-ORM	Spring Data JPA / Hibernate
-Monitoring	Spring Boot Actuator
-Build Tool	Maven
-🚀 Setup Instructions
-1️⃣ Clone the repository
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| 💻 **Language** | Java 17 |
+| ☕ **Framework** | Spring Boot 3.3.0 |
+| 🗄️ **Database** | MySQL 8.0 |
+| 🧩 **ORM** | Hibernate / Spring Data JPA |
+| 📈 **Monitoring** | Spring Boot Actuator |
+| 🧰 **Build Tool** | Maven |
+
+---
+
+## 🚀 Setup Instructions
+
+### 1️⃣ Clone the repository
+
+```bash
 git clone https://github.com/vivek-kumar/quick-loan.git
 cd quick-loan
-
 2️⃣ Configure the database
 
-Update src/main/resources/application.properties:
+Edit src/main/resources/application.properties:
 
 spring.datasource.url=jdbc:mysql://localhost:3306/quick_loan
 spring.datasource.username=root
 spring.datasource.password=yourpassword
+
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 
-3️⃣ Build & run the app
+3️⃣ Build & Run the application
 mvn clean install
 mvn spring-boot:run
 
 
-Server starts at 👉 http://localhost:8080
+✅ Server starts at → http://localhost:8080
 
 🔍 API Endpoints
 Method	Endpoint	Description
 POST	/api/v1/loans	Create a new loan
-POST	/api/v1/loans/{loanId}/transactions	Add a transaction to a loan
+POST	/api/v1/loans/{loanId}/transactions	Add a transaction
+GET	/api/v1/loans/{loanId}/transactions	Get all transactions
 GET	/api/v1/loans/{loanId}/interest?periodDays=30	Calculate interest
-GET	/api/v1/loans/{loanId}/transactions	Fetch all transactions of a loan
-1️⃣ Create a Loan
+🧾 Example — Create a Loan
 
-Endpoint: POST /api/v1/loans
-Request Body (JSON):
+POST /api/v1/loans
 
 {
   "loanType": "DAILY",
@@ -114,7 +137,7 @@ Request Body (JSON):
 }
 
 
-Response Body:
+Response
 
 {
   "success": true,
@@ -124,89 +147,13 @@ Response Body:
     "loanType": "DAILY",
     "loanAmount": 10000.0,
     "interestRate": 40.0,
-    "disbursementDate": "2025-10-23",
-    "firstPaymentDate": "2025-10-24",
-    "status": "APPROVED",
-    "transactions": []
+    "status": "APPROVED"
   }
 }
 
-2️⃣ Add a Loan Transaction
+🧮 Example — Calculate Interest
 
-Endpoint: POST /api/v1/loans/{loanId}/transactions
-Request Body (JSON):
-
-{
-  "transactionType": "DISBURSEMENT",
-  "amount": 10000.0,
-  "transactionDate": "2025-10-23"
-}
-
-
-Response Body:
-
-{
-  "success": true,
-  "message": "Transaction recorded",
-  "data": {
-    "id": 1,
-    "transactionType": "DISBURSEMENT",
-    "amount": 10000.0,
-    "transactionDate": "2025-10-23",
-    "loan": {
-      "id": 1,
-      "loanType": "DAILY",
-      "loanAmount": 10000.0,
-      "interestRate": 40.0,
-      "status": "APPROVED"
-    }
-  }
-}
-
-3️⃣ Get All Transactions for a Loan
-
-Endpoint: GET /api/v1/loans/{loanId}/transactions
-
-Response Body:
-
-{
-  "success": true,
-  "message": "Transactions retrieved",
-  "data": [
-    {
-      "id": 1,
-      "transactionType": "DISBURSEMENT",
-      "amount": 10000.0,
-      "transactionDate": "2025-10-23",
-      "loan": {
-        "id": 1,
-        "loanType": "DAILY",
-        "loanAmount": 10000.0,
-        "interestRate": 40.0,
-        "status": "APPROVED"
-      }
-    },
-    {
-      "id": 2,
-      "transactionType": "REPAYMENT",
-      "amount": 2000.0,
-      "transactionDate": "2025-10-24",
-      "loan": {
-        "id": 1,
-        "loanType": "DAILY",
-        "loanAmount": 10000.0,
-        "interestRate": 40.0,
-        "status": "APPROVED"
-      }
-    }
-  ]
-}
-
-4️⃣ Calculate Interest
-
-Endpoint: GET /api/v1/loans/{loanId}/interest?periodDays=30
-
-Response Body:
+GET /api/v1/loans/{loanId}/interest?periodDays=30
 
 {
   "success": true,
@@ -215,12 +162,9 @@ Response Body:
 }
 
 
-Explanation: Calculated using LoanRuleFactory.SIMPLE_INTEREST formula: (principal * rate * days) / 36500
+📘 Formula: (principal * rate * days) / 36500 (via LoanRuleFactory.SIMPLE_INTEREST)
 
-5️⃣ Example Error Response
-
-If something goes wrong (loan not found, invalid input, etc.), a standardized error response can be returned:
-
+❌ Example — Error Response
 {
   "success": false,
   "message": "Loan with ID 99 not found",
@@ -229,22 +173,24 @@ If something goes wrong (loan not found, invalid input, etc.), a standardized er
 
 🧾 Monitoring (Actuator)
 
-Access health and metrics at:
+Access health and metrics endpoints:
 
 http://localhost:8080/actuator/health
 
 http://localhost:8080/actuator/metrics
-[Download Swagger Documentation](docs/swagger.pdf)
+
+📄 (Optional) Add Swagger documentation or link here if available.
+
 📘 Future Enhancements
 
-🧮 Add EMI calculator
+🧮 Add EMI Calculator
 
-📊 Integrate ELK for logging and analytics
+📊 Integrate ELK for logging & analytics
 
 🔐 JWT-based authentication and authorization
 
-🌐 Swagger/OpenAPI UI for API documentation
+🌐 Swagger/OpenAPI UI for live documentation
 
 💡 Advanced interest strategies (monthly, compounding)
 
-📈 Dashboard for loan and transaction statistics
+📈 Dashboard for loan and transaction analytics
